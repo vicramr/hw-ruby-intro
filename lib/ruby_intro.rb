@@ -3,15 +3,31 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  accumulator = 0
+  arr.each {|elem| accumulator += elem}
+  accumulator
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.empty?
+    0
+  elsif arr.length == 1
+    arr[0]
+  else
+    arr.sort! {|a, b| b <=> a}
+    arr[0] + arr[1]
+  end
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  for i in 0..(arr.length - 2)
+    for j in (i+1)..(arr.length - 1)
+      if (arr[i] + arr[j]) == n
+        return true
+      end
+    end
+  end
+  return false
 end
 
 # Part 2
