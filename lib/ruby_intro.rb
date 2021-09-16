@@ -33,19 +33,55 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  'Hello, ' + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  (s =~ /[bcdfghjklmnpqrstvwxyz].*/i) == 0
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if s.empty?
+    return false
+  else
+    return ((s =~ /\A[01]*00\z/) != nil) || (s == '0')
+  end
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize(isbn, price)
+    self.isbn=isbn
+    self.price=price
+  end
+
+  def isbn
+    @isbn
+  end
+
+  def price
+    @price
+  end
+
+  def isbn=(isbn)
+    if isbn.empty?
+      raise ArgumentError, "ISBN should not be empty"
+    else
+      @isbn = isbn
+    end
+  end
+
+  def price=(price)
+    if price <= 0
+      raise ArgumentError, "Price must be a positive float"
+    else
+      @price = price
+    end
+  end
+
+  def price_as_string
+    "$" + ("%.2f" % @price)
+  end
+
 end
